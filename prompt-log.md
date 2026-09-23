@@ -78,3 +78,14 @@
 - สิ่งที่เกือบต้องเดา: ไม่ได้กำหนดค่า default ของ `DATABASE_URL` เพราะ spec ระบุ PostgreSQL แต่ไม่ระบุ URL จึงบังคับอ่านจาก environment และใช้ SQLite เฉพาะ fixture ตาม plan.md
 
 ---
+
+## 2026-09-23 คำสั่ง: /implement T-15 specs/001-booking/tasks.md
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์ที่สร้างหรือแก้: `frontend/src/pages/SlotPicker.jsx`, `frontend/src/api/client.js`, `frontend/src/App.jsx`, `frontend/src/__tests__/SlotPicker.test.jsx`
+- ผลลัพธ์: สร้างหน้าจอเลือกแพ็กเกจและช่วงเวลา แสดงวันที่ ช่วงเวลา และที่นั่งคงเหลือ พร้อมโหลดข้อมูลใหม่เมื่อเปลี่ยนแพ็กเกจผ่าน API จำลองได้
+- ผล test: `npm test -- --run` ผ่าน 3 tests ใน 2 files; `npm run build` ผ่าน
+- สิ่งที่เกือบต้องเดา: ไม่พบข้อมูลรูปแบบ response เพิ่มเติมนอก plan.md จึงรองรับทั้งรายการตามสัญญาและ response ที่ห่อด้วย `slots`; ไม่ได้กำหนดรายการแพ็กเกจจาก spec จึงใช้ตัวเลือกแพ็กเกจตามหน้าจอใน task โดยไม่เพิ่มพฤติกรรมนอกขอบเขต
+- ข้อสังเกต: baseline `setup.test.jsx` แสดง React `act(...)` warning ระหว่างโหลด API จริง แต่ test และ build ผ่าน
+
+---
