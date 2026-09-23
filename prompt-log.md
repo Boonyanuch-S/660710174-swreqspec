@@ -58,3 +58,23 @@
 - ระบุลำดับงานและความสัมพันธ์กลับไปหา FR/AC อย่างชัดเจน
 
 ---
+
+## 2026-09-23 คำสั่ง: /tasks specs/001-booking/spec.md
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ผลลัพธ์: `specs/001-booking/tasks.md`
+- สรุป: แตก `plan.md` เป็น 18 task ตามลำดับการพึ่งพา ครอบคลุมทุก AC และ Constraint ใน `spec.md`
+- สิ่งที่รอ: มี 4 task ที่รอคำตอบ Q-02 เรื่องรูปแบบและวิธีออกหมายเลขคิว
+- ขอบเขต: ยังไม่เริ่มทำ task ใด ๆ ตามคำสั่งของทีม
+
+---
+
+## 2026-09-23 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์ที่สร้างหรือแก้: `backend/app/config.py`, `backend/app/db/session.py`, `backend/app/db/migrations/001_init.py`, `backend/tests/conftest.py`
+- ผลลัพธ์: สร้างการอ่าน `DATABASE_URL`, SQLAlchemy engine/session factory, migration `upgrade(engine)` และ SQLite in-memory fixtures สำหรับ test
+- ผล test: `cd backend && pytest tests/conftest.py -q` ผ่าน 1 test; `python -m py_compile ...` ผ่าน
+- สิ่งที่เกือบต้องเดา: ไม่ได้กำหนดค่า default ของ `DATABASE_URL` เพราะ spec ระบุ PostgreSQL แต่ไม่ระบุ URL จึงบังคับอ่านจาก environment และใช้ SQLite เฉพาะ fixture ตาม plan.md
+
+---
