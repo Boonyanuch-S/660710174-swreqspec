@@ -88,3 +88,12 @@
 - ไฟล์ที่แก้: backend/tests/test_AC_BKG_01.py
 - ผล: เพิ่ม `test_TC_BKG_01_1_booking_success` และคง `test_AC_BKG_01`, `test_TC_BKG_01_2_booking_last_seat`, `test_TC_BKG_01_3_unverified_user` ไว้
 - ตรวจผล: `cd backend && pytest -q` -> 7 passed
+
+---
+
+## 2569-10-07 16:24 คำสั่ง: /verify specs/001-booking/
+
+- ผล test: backend 7 passed, frontend 1 passed
+- ผล RTM: 15 แถวตามรอยไปข้างหน้า — ครบ 1, ยังไม่ถึง 8, รอ Q-xx 0, ช่องโหว่ 6
+- ข้อค้นพบใหม่: F-01 ถึง F-12 ใน specs/001-booking/rtm.md
+- ไฟล์ที่สร้าง: specs/001-booking/rtm.md
