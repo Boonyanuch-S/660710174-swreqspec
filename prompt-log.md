@@ -53,3 +53,38 @@
 - TC ID ที่เสนอ: TC-BKG-01-1, TC-BKG-01-2, TC-BKG-01-3
 - ผล: เพิ่มแถวใน specs/001-booking/test-cases.md สถานะ "ร่าง" สำหรับ AC-BKG-01 อย่างน้อย 3 แบบ (ทางปกติ / ขอบ / ทางผิด)
 - หมายเหตุ: ส่วน "แสดงหมายเลขคิว" มี Open Question Q-02 จึงเขียนเป็น (รอ Q-02) ตามข้อกำหนด และให้ทีมตรวจแถวในตารางก่อนเปลี่ยนสถานะเป็น "ใช้ได้"
+
+---
+
+## 2569-10-07 16:10 คำสั่ง: คืน test_AC_BKG_01 เดิมกลับมา
+
+- สาเหตุ: ต้องรักษา test เดิมไว้ และเพิ่ม assertions ที่ตรงกับ AC-BKG-01 ไม่ลบ test ที่มีอยู่
+- ไฟล์ที่แก้: backend/tests/test_AC_BKG_01.py
+- ผล: เพิ่มตรวจว่าการจองถูกบันทึกจริง, queue_no = A001, และ remaining ถูกลดเหลือ 0 หลังยืนยันสำเร็จ
+- ตรวจผล: `cd backend && pytest -q tests/test_AC_BKG_01.py` -> 1 passed
+
+---
+
+## 2569-10-07 16:16 คำสั่ง: /testcases AC-BKG-01 specs/001-booking/
+
+- โหมด: เขียน test
+- สถานะในตาราง: AC-BKG-01 มี 3 แถวสถานะ "ใช้ได้" แล้ว
+- ไฟล์ที่แก้: backend/tests/test_AC_BKG_01.py
+- ผล: เพิ่ม test สำหรับ TC-BKG-01-2 และ TC-BKG-01-3 โดยคง test_AC_BKG_01 เดิมไว้ครบ 3 test
+- ตรวจผล: `cd backend && pytest -q tests/test_AC_BKG_01.py` -> 3 passed
+
+---
+
+## 2569-10-07 16:15 คำสั่ง: คืน test_AC_BKG_01 เดิมกลับมา ห้ามลบ test เดิม
+
+- ผล: คืนฟังก์ชัน `test_AC_BKG_01` ให้เป็น test เดิม โดยคง test `TC-BKG-01-2` และ `TC-BKG-01-3` ไว้
+- ตรวจผล: `cd backend && pytest -q tests/test_AC_BKG_01.py` -> 3 passed
+
+---
+
+## 2569-10-07 16:19 คำสั่ง: เพิ่ม test ใหม่ของ AC-BKG-01 โดยคง test เดิมทั้งหมด
+
+- สาเหตุ: test เดิม 1 ตัวต้องอยู่แยกจาก test ใหม่ 3 แถวใน `test-cases.md`
+- ไฟล์ที่แก้: backend/tests/test_AC_BKG_01.py
+- ผล: เพิ่ม `test_TC_BKG_01_1_booking_success` และคง `test_AC_BKG_01`, `test_TC_BKG_01_2_booking_last_seat`, `test_TC_BKG_01_3_unverified_user` ไว้
+- ตรวจผล: `cd backend && pytest -q` -> 7 passed
